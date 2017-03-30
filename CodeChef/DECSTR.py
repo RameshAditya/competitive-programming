@@ -1,10 +1,12 @@
+s='abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvw'
 T=int(input())
 for t in range(T):
-    k=int(input())
-    s='abcdefghijklmnopqrstuvwxyz'
-    k+=1
-    if k>=26:
-        print(s[::-1]*(k//26),end='')
-        print(s[::-1][:k%26])
+    x=int(input())
+    r=x%26
+    x=x//26
+    if x==0:
+        print(s[:r+1][::-1])
     else:
-        print(s[:k][::-1])
+        a=''
+        a+=s[:r+26*x+x+1]
+        print(a[::-1])
