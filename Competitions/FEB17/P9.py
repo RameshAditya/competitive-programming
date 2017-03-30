@@ -1,0 +1,14 @@
+A=[1]
+ct=1
+start=[1]
+startptr=0
+n=int(input())
+while(ct<=n):
+    A.append(3*A[startptr])
+    A.append(5*A[startptr])
+    A.append(7*A[startptr])
+    startptr+=1
+    A=list(set(A))
+    A.sort()
+    ct=len(A)
+print(A[n-1])
