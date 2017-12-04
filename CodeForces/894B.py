@@ -1,0 +1,5 @@
+n,m,k=input().split(' ')
+n=int(n)
+m=int(m)
+k=int(k)
+print(max(0,(1<<((n-1)*(m-1)))%(10**9 + 7)))
