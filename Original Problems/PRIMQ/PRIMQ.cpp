@@ -81,8 +81,8 @@ int main(){
 	while(t--){
 		int l, r;
 		cin>>l>>r;
-		//std::vector<int>::iterator lo = lower_bound(primes.begin(), primes.end(), l);
-		//std::vector<int>::iterator up = upper_bound(primes.begin(), primes.end(), r);
+		std::vector<int>::iterator lo = lower_bound(primes.begin(), primes.end(), l);
+		std::vector<int>::iterator up = upper_bound(primes.begin(), primes.end(), r);
 		
 		//for(int i = lo-primes.begin(); i<up-primes.begin();i++)cout<<"P:"<<primes[i]<<" ";
 		int ct=0;
