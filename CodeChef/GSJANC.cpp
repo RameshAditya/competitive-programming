@@ -32,6 +32,7 @@ int main(){
 				}
 			}
 		}
+		for(int i=0;i<=n;i++)cout<<levels[i]<<" ";
 		if(vis[e])cout<<"YES "<<levels[e]<<"\n";
 		else cout<<"NO\n";
 	}
