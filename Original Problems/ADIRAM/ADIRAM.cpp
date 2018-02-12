@@ -92,8 +92,8 @@ int query(int node, int s, int e, int l, int r){
 	
 int main(){
 	#ifndef ONLINE_JUDGE
-		freopen("in04.txt", "r", stdin);
-//		freopen("out5.txt", "w", stdout);
+		freopen("in00.txt", "r", stdin);
+		freopen("out00.txt", "w", stdout);
 	#endif
 	std::ios_base::sync_with_stdio(0);
 	int n;
@@ -101,9 +101,7 @@ int main(){
 	for(int i=0;i<4*n;i++)lz[i]=-1, st[i]=0;
 	int q;
 	cin>>q;
-	int xx=-1;
 	while(q--){
-		xx++;
 		char ch;
 		int a,b;
 		cin>>ch;
@@ -111,7 +109,7 @@ int main(){
 		if(ch=='!')
 			mark(1, 0, n-1, a-1, b-1);
 		else
-			cout<<xx<<" : "<<b-a+1-query(1, 0, n-1, a-1, b-1)<<"\n";
+			cout<<b-a+1-query(1, 0, n-1, a-1, b-1)<<"\n";
 	}
 	return 0;
 }
