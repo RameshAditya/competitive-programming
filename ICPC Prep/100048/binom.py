@@ -1,3 +1,6 @@
+
+
+
 lpf=[i for i in range(1001000)]
 
 def prep():
@@ -16,7 +19,6 @@ def fct(n):
     ans=[]
     global lpf
     while n!=1:
-        print('cur',n)
         ct=1
         cur=lpf[n]
         if lpf[n]==lpf[n//lpf[n]]:
@@ -27,9 +29,9 @@ def fct(n):
         else:
             n=n//lpf[n]
         s=''
-        if ct>1:
-            s+=str(cur)+'^'+str(ct)
-        else:
+        #if ct>1:
+        #    s+=str(cur)+'^'+str(ct)
+        if True:
             s+=str(cur)
         #s+='x'
         ans.append(s)
@@ -60,12 +62,12 @@ for t in range(T):
         print('A^'+str(n)+'+',end='')
         for i in range(1,n):
             if i!=1 and i!=n-1:
-                print(fct(ncr[n][i])+'A^'+str(n-i)+'B^'+str(i)+'+',end='')
+                print(fct(ncr[n][i])+'A^'+str(n-i)+'xB^'+str(i)+'+',end='')
             elif i==1 and n==2:
-                print(fct(ncr[n][i])+'A'+'B'+'+',end='')
+                print(fct(ncr[n][i])+'A'+'xB'+'+',end='')
             elif i==1:
-                print(fct(ncr[n][i])+'A^'+str(n-i)+'B'+'+',end='')
+                print(fct(ncr[n][i])+'A^'+str(n-i)+'xB'+'+',end='')
             elif i==n-1:
-                print(fct(ncr[n][i])+'A'+'B^'+str(i)+'+',end='')
+                print(fct(ncr[n][i])+'A'+'xB^'+str(i)+'+',end='')
         print('B^'+str(n))
                 

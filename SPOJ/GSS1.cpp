@@ -1,61 +1,41 @@
-#include<stdio.h>
+#include<bits/stdc++.h>
+using namespace std;
+#define ll long long
+ll tree[1000];
+ll A[1000];
+const ll INF = 1e9;
 
-#define max(a,b) (a>b)?a:b
-
-const int n=50001;
-int t[2*n]={0};
-//int A[n];
-/*int f(int start, int end){// int allneg=0){
-	int allneg=1;
-	int lneg=t[start];
-	for(int i=start;i<=end;i++){if(t[i]>0){allneg=0;break;}lneg=max(lneg,t[i]);}
-	if(allneg)return lneg;
+ll build(ll node, ll start, ll end){
+	if(start==end)tree[node]=A[start];
 	else{
-	//return least negative
-	int maxsum=t[start];
-	int cur=t[start];
-	for(int i=start;i<=end;i++){
-		if(cur+t[i]>maxsum)maxsum=cur+t[i];
-		else if(cur+t[i]>0)cur+=t[i];
-		else cur=0;
+		ll mid = (start + end)>>1;
+		build(node<<1, start, mid);
+		build(node<<1|1, mid+1, end);
+		tree[node] = max( max(tree[node<<1], tree[node<<1|1]), tree[node<<1] + tree[node<<1|1]);
 	}
-	return max(cur,maxsum);
-}
-}*/
-
-void build(int n){
-	for(int i=n-1;i>0;i--)t[i]=max(t[i<<1]+t[i<<1|1],max(t[i<<1],t[i<<1|1]));
 }
 
-/*void update(int ind,int val, int n){
-	for(t[ind+=n]=val;ind>1;ind>>=1)t[ind>>1]=f(t[ind],t[ind^1]);
-}*/
-
-void query(int l,int r,int n){
-	int res=0;
-	for(l+=n,r+=n;l<r;l>>=1,r>>=1){
-		if(l&1)res+=t[l++];
-		if(r&1)res+=t[--r];
+ll query(ll node, ll start, ll end, ll l, ll r){
+	if(r<start||l>end)return -INF;
+	if(l<=start && end<=r)return tree[node];
+	else{
+		ll mid = (start + end)>>1;
+		ll a = query(node<<1, start, mid, l, r);
+		ll b = query(node<<1|1, mid+1, end, l, r);
+		return max( max(a, b), a+b);
 	}
-	printf("%d\n",res);
-}
-
-void disptree(int n){
-	for(int i=0;i<2*n;i++)printf("%d ",t[i]);
 }
 
 int main(){
-	int i;
-	int x;	scanf("%d",&x);
-	for(i=x;i<2*x;i++)scanf("%d",t+i);
-	build(x);
-	disptree(x);
-	int q; scanf("%d",&q);
+	ll n;
+	cin>>n;
+	for(ll i=0;i<n;i++)cin>>A[i];
+	build(1,0,n-1);
+	ll q;
+	cin>>q;
 	while(q--){
-		int l,r;
-		scanf("%d %d",&l,&r);
-		query(l-1,r,x);
+		ll s, e;
+		cin>>s>>e;
+		cout<<query(1,0,n-1,s-1,e-1)<<"\n";
 	}
-	return 0;
 }
-

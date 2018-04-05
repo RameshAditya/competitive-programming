@@ -2,21 +2,18 @@ T=int(input())
 for t in range(T):
     s1=input()
     s2=input()
-    if len(s1)>len(s2):
-        c=0
-        for i in s1:
-            if i in s2:
-                c+=1
-        print(len(s1)-len(s2)+c-1)
-    elif len(s1)==len(s2):
-        c=0
-        for i in s1:
-            if i in s2:
-                c+=1
-        print(len(s2)-c)
-    else:
-        c=0
-        for i in s1:
-            if i in s2:
-                c+=1
-        print(len(s2)-c)
+    n=len(s1)
+    m=len(s2)
+    dp=[[0 for i in range(m+1)] for j in range(n+1)]
+    for i in range(n+1):
+        for j in range(m+1):
+            if i==0:
+                dp[i][j]=j
+            elif j==0:
+                dp[i][j]=i
+            else:
+                if s1[i-1]==s2[j-1]:
+                    dp[i][j]=dp[i-1][j-1]
+                else:
+                    dp[i][j]=1+min(dp[i][j-1], dp[i-1][j-1], dp[i-1][j])
+    print(dp[n][m])
