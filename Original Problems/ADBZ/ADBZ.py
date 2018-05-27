@@ -1,13 +1,15 @@
 import random
 '''
 Problem Statement:
-Aditya is watching Dragon Ball Z, the scene where Goku and Frieza are fighting (i.e. screaming and staring).
+Aditya is watching Dragon Ball Z, and Goku and Frieza are fighting (i.e. screaming and staring).
 
 Frieza is charging from an initial power level A, at a rate f per second while Goku is charging from an initial level B at a rate g per second.
 
-But with every passing ten seconds (i.e second 10,20,30 ...), their charging rate each goes to 99% of what it was.
+But with every passing ten seconds (i.e second 10,20,30 ...), their charging rate each goes to 99% of what it was, due to fatigue.
 
-Find out when Goku surpasses (strictly greater than) Frieza's power.
+Find out if/when Goku surpasses (strictly greater than) Frieza's power.
+
+Print -1 if the time it takes for Goku to exceed Frieza's power is more than 100 000.
 
 Input Format -
 Number of test cases (T) in the first line (1<=T<=100 005)
@@ -17,7 +19,7 @@ Frieza's rate of growth (f) (0<=f<=100 005)
 Goku's initial power level (B) (0<=B<=100 005)
 Goku's rate of growth (g) (0<=g<=100 005)
 
-Print -1 if the time it takes for Goku to exceed Frieza's power is more than 100 000.
+
 
 Sample Input -
 1
